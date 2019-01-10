@@ -3,8 +3,8 @@ import {connect} from 'react-redux';
 class EditDictionaries extends Component {
      handleEdit = (e) => {
   e.preventDefault();
-  const newDomain = this.getDomain.value;
-  const newRange = this.getRange.value;
+  const newDomain = this.getTitle.value;
+  const newRange = this.getMessage.value;
   const data = {
     newDomain,
     newRange
@@ -24,12 +24,12 @@ class EditDictionaries extends Component {
                             <div class="row">
                                 <div class="input-field col s5">
                                     <input id="domain" ref={(input) => this.getDomain = input}
-                                     defaultValue={this.props.post.domain}  type="text" data-length="10" />
+                         defaultValue={this.props.post.domain}  type="text" data-length="10" />
                                     <label for="input_text">Write Domain here</label>
                                 </div>
                                 <div class="input-field col s5">
                                     <input id="range" type="text" ref={(input) => this.getRange = input}
-                                    defaultValue={this.props.post.range}  data-length="10" />
+    defaultValue={this.props.post.range}  data-length="10" />
                                     <label for="input_text">Write Range here</label>
                                 </div>
                                 <div className="col s2">
