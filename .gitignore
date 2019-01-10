@@ -21,3 +21,9 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+ *Something about testing*
+1, Find problems early
+2. Easier to change without breaking
+3. Documentation
+4. Design (test-driven development)
