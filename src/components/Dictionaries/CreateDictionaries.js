@@ -1,46 +1,51 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import ReactDOM from 'react-dom';
 class CreateDictionaries extends Component {
 
-    clearField = () =>  {
+    clearField = () => {
         const domain = this.getDomain.value;
-        const range =  this.getRange.value;
+        const range = this.getRange.value;
         const data = {
             id: new Date(),
             domain,
             range
-          }
+        }
         this.props.dispatch({
-            type:'ADD_POST',
-            data});
-          this.getDomain.value = '';
-          this.getRange.value = '';
+            type: 'ADD_POST',
+            data
+        });
+        this.getDomain.value = '';
+        this.getRange.value = '';
     }
-      handleSubmit = (e) => {
-    e.preventDefault();
-    this.props.history.push('/AddDictionaries/')
-    const domain = this.getDomain.value;
-    const range =  this.getRange.value;
-    if(domain === range){
-       
-    }
-    const data = {
-      id: new Date(),
-      domain,
-      range
-    }
+    handleSubmit = (e) => {
+        e.preventDefault();
+        this.props.history.push('/AddDictionaries/')
+        const domain = this.getDomain.value;
+        const range = this.getRange.value;
+        if (domain === range) {
+
+        }
+        const data = {
+            id: new Date(),
+            domain,
+            range
+        }
         this.props.dispatch({
-      type:'ADD_POST',
-      data});
-    this.getDomain.value = '';
-    this.getRange.value = '';
-  }
-    render(){   
+            type: 'ADD_POST',
+            data
+        });
+        this.getDomain.value = '';
+        this.getRange.value = '';
+    }
+    render() {
 
         return (
             <div className="CreateDictionaries">
                 <div className="container">
+                    <div class="collection">
+                        <a href="#!" class="collection-item"><span class="badge" id="clear" onClick={this.clearField}>X</span> Consistency Occured please clear the form</a>
+                    </div>
                     <div class="card-panel">
                         <h5 class="red-text text-lighten-2">Create Dictionaries</h5>
                     </div>
@@ -48,11 +53,11 @@ class CreateDictionaries extends Component {
                         <form onSubmit={this.handleSubmit} class="col s12">
                             <div class="row">
                                 <div class="input-field col s5">
-                                    <input id="domain"  ref={(input)=>this.getDomain = input}  type="number" data-length="10" />
+                                    <input id="domain" ref={(input) => this.getDomain = input} type="number" data-length="10" />
                                     <label for="input_text">Write Domain here</label>
                                 </div>
                                 <div class="input-field col s5">
-                                    <input id="range" type="number" ref={(input)=>this.getRange = input} data-length="10" />
+                                    <input id="range" type="number" ref={(input) => this.getRange = input} data-length="10" />
                                     <label for="input_text">Write Range here</label>
                                 </div>
                                 <div className="col s2">
@@ -68,7 +73,6 @@ class CreateDictionaries extends Component {
                         </form>
                     </div>
                 </div>
-                <button className="uk-button uk-width-1-1" id="clear" onClick={this.clearField}><i className="uk-icon-undo">Clear</i></button>
             </div>
         );
     }
