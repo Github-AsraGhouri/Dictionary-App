@@ -3,8 +3,8 @@ import {connect} from 'react-redux';
 class EditDictionaries extends Component {
      handleEdit = (e) => {
   e.preventDefault();
-  const newDomain = this.getTitle.value;
-  const newRange = this.getMessage.value;
+  const newDomain = this.getDomain.value;
+  const newRange = this.getRange.value;
   const data = {
     newDomain,
     newRange
