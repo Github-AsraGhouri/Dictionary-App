@@ -1,22 +1,30 @@
 import React, { Component } from 'react';
-import AddDictionaries from './AddDictionaries';
 import {connect} from 'react-redux';
-import { Link } from "react-router-dom";
+import ReactDOM from 'react-dom';
 class CreateDictionaries extends Component {
-    // constructor(props){
-    //     super(props);
-    //     this.state= {
-    //         domain :  '',
-    //         range: ''
-    //     }
-    //     this.handleChange = this.handleChange.bind(this);
-    // this.handleSubmit = this.handleSubmit.bind(this);
-    // }
+
+    clearField = () =>  {
+        const domain = this.getDomain.value;
+        const range =  this.getRange.value;
+        const data = {
+            id: new Date(),
+            domain,
+            range
+          }
+        this.props.dispatch({
+            type:'ADD_POST',
+            data});
+          this.getDomain.value = '';
+          this.getRange.value = '';
+    }
       handleSubmit = (e) => {
     e.preventDefault();
     this.props.history.push('/AddDictionaries/')
     const domain = this.getDomain.value;
     const range =  this.getRange.value;
+    if(domain === range){
+       
+    }
     const data = {
       id: new Date(),
       domain,
@@ -28,18 +36,8 @@ class CreateDictionaries extends Component {
     this.getDomain.value = '';
     this.getRange.value = '';
   }
-    // handleChange = (e) => {
-    //     this.setState({
-    //         // domain: e.target.value
-    //         [e.target.id]: e.target.value
-    //     })
-    // }
-    // handleSubmit = (e) => {
-    //     e.preventDefault();
-    //     console.log(this.state);
-      
-    // }
-    render() {
+    render(){   
+
         return (
             <div className="CreateDictionaries">
                 <div className="container">
@@ -50,7 +48,7 @@ class CreateDictionaries extends Component {
                         <form onSubmit={this.handleSubmit} class="col s12">
                             <div class="row">
                                 <div class="input-field col s5">
-                                    <input id="domain" ref={(input)=>this.getDomain = input}  type="number" data-length="10" />
+                                    <input id="domain"  ref={(input)=>this.getDomain = input}  type="number" data-length="10" />
                                     <label for="input_text">Write Domain here</label>
                                 </div>
                                 <div class="input-field col s5">
@@ -70,10 +68,7 @@ class CreateDictionaries extends Component {
                         </form>
                     </div>
                 </div>
-                
-            {/* {this.state.domain}
-            {this.state.range} */}
-           {/* <AddDictionaries domainprop={this.state.domain} rangeProp={this.state.range}/> */}
+                <button className="uk-button uk-width-1-1" id="clear" onClick={this.clearField}><i className="uk-icon-undo">Clear</i></button>
             </div>
         );
     }
